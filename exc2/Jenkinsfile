@@ -2,7 +2,7 @@ pipeline {
     agent {label "docker-agent"}
 
     environment{
-        DOCKERHUB_CRED = credetionals("Dockerhub_CRED")
+        DOCKERHUB_CRED = credentials("Dockerhub_CRED")
     }
     stages {
         stage('docker ps') {
