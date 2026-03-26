@@ -1,0 +1,19 @@
+docker network create 
+     docker run -d --name jenkins-inbound-agent --network jenkins-net 
+     -e JENKINS_URL=http://jenkins_master1:8088
+     -e JENKINS_SECRET=abc 
+     -e JENKINS_AGENT_NAME="jenkins-inbound-agent"
+     -v jenkins-slave-data:/home/jenkins jenkins/inbound-agent
+
+
+    docker run -d --name jenkins-master1 --network jenkins-net -p 50006:50000 -p 3006:3000 -p 8056:8080 -v jenkins_master_tbd:/var/jenkins_home jenkins/jenkins:lts
+
+     docker run -d --name jenkins-inbound-agent --network jenkins-net  -e JENKINS_URL=http://jenkins-master1:8080 -e JENKINS_SECRET=abc -e JENKINS_AGENT_NAME="jenkins-inbound-agent" -v jenkins-slave-data:/home/jenkins jenkins/inbound-agent
+
+
+
+     python -m pip install flask
+     
+
+     creating a github pat 
+     name jenkins-inbound-agent
