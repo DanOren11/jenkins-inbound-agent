@@ -1,0 +1,13 @@
+pipeline {
+    agent {label "Docker-agent"}
+
+    stages {
+        stage("Run container") {
+            steps {
+                script {
+                    sh 'docker run -d --name dind-nginx -p 8000:80 nginx:latest'
+                }
+            }
+        }
+    }
+}
