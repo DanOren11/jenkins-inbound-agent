@@ -1,7 +1,26 @@
 pipeline {
     agent {label "docker-agent"}
 
+    environment{
+        DOCKERHUB_CRED = credetionals("Dockerhub_CRED")
+    }
     stages {
+        stage('docker ps') {
+            steps {
+                sh 'docker ps'
+            }
+        }
+        stage("Docker ligin") {
+            steps {
+                    sh ' echo "${DOCKERHUB_CRED_PSW}" | docker login --username "${DOCKERHUB_CRED_USR}" --password-stdin'
+                
+            }
+        }
+    }
+}
+
+/*
+stages {
         stage('Pull NGINX Image') {
             steps {
                 script {
@@ -17,4 +36,4 @@ pipeline {
             }
         }
     }
-}
+*/
