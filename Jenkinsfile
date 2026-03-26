@@ -5,8 +5,8 @@ pipeline{
     stages {
         stage("run python script"){
             steps{
-                  sh 'pip install -r requirements.txt'
-                sh 'python3 main.py' 
+                sh 'python3 -m pip install --user -r requirements.txt'
+                sh 'python3 main.py'
             }
         }
     }
