@@ -2,6 +2,13 @@ pipeline {
     agent {label "docker-agent"}
 
     stages {
+        stage('Pull NGINX Image') {
+            steps {
+                script {
+                    sh 'docker pull nginx:latest'
+                }
+            }
+        }
         stage("Run container") {
             steps {
                 script {
