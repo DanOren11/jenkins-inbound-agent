@@ -17,3 +17,7 @@ docker network create
 
      creating a github pat 
      name jenkins-inbound-agent
+
+    apt-get update
+    apt install python3-flask
+    docker exec --user root -it jenkins-inbound-agent bash
