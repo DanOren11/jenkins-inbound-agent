@@ -16,11 +16,13 @@ pipeline {
                 
             }
         }
-        stage('Build image') {
+        stage('Build & Push image') {
             steps {
-                sh 'pwd'
-                sh 'ls -la'
-                // sh 'docker build -t docker-agent-jenkins-pipeline:v1 .'
+                dir('exc2') {
+                    sh 'docker build -t docker-agent-jenkins-pipeline:v1 .'
+                    sh 'docker tag docker-agent-jenkins-pipeline:v1 danpowercom/docker-agent-jenkins-pipeline:v1'
+                    sh 'docker push danpowercom/docker-agent-jenkins-pipeline:v1'
+                }
             }
         }
     }
