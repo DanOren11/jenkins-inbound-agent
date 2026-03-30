@@ -10,10 +10,17 @@ pipeline {
                 sh 'docker ps'
             }
         }
-        stage("Docker ligin") {
+        stage('Docker login') {
             steps {
                     sh ' echo "${DOCKERHUB_CRED_PSW}" | docker login --username "${DOCKERHUB_CRED_USR}" --password-stdin'
                 
+            }
+        }
+        stage('Build image') {
+            steps {
+                sh 'pwd'
+                sh 'ls -la'
+                // sh 'docker build -t docker-agent-jenkins-pipeline:v1 .'
             }
         }
     }
